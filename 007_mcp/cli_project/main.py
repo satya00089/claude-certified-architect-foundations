@@ -1,8 +1,15 @@
+"""
+Main entry point for the CLI application.
+This module initializes the MCP client, connects to the MCP server,
+and provides a command-line interface for interacting with the server's tools and prompts.
+"""
+
 import asyncio
 import sys
 import os
-from dotenv import load_dotenv
 from contextlib import AsyncExitStack
+
+from dotenv import load_dotenv
 
 from mcp_client import MCPClient
 from core.claude import Claude
@@ -24,6 +31,7 @@ assert anthropic_api_key, (
 
 
 async def main():
+    """Main function to run the CLI application."""
     claude_service = Claude(model=claude_model)
 
     server_scripts = sys.argv[1:]
